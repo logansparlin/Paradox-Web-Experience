@@ -1,0 +1,18 @@
+.overlay-container
+	position absolute
+	width 100%
+	height 100%
+	background #1e1e1e
+	z-index 50
+	opacity 0
+	visibility hidden
+	// transform skewY(-10deg) skewX(-7deg)
+	transition all 200ms ease-out
+	color white
+	
+.menu--active
+	.overlay-container
+		opacity 1
+		visibility visible
+		transition all 200ms ease-out
+		// transform skewY(0deg) skewX(0deg)

@@ -1,0 +1,56 @@
+section
+	height 100%
+	width 100%
+	position absolute
+	top 0
+	left 0
+
+.landing 
+	z-index 5
+	.landing-left, .landing-right
+		width 50%
+		position absolute
+		top 0
+		left 0
+		height 100%
+		transition all 1200ms cubic-bezier(.09,.67,.40,.95)
+		opacity 1
+	.landing-left 
+		background url('/img/landing-left.jpg') no-repeat center center
+		background-size auto 100%
+		float left
+		color #1f1f1f
+		overflow hidden
+	.landing-right 
+		background url('/img/landing-right.jpg') no-repeat center center
+		background-size auto 100%
+		left 50%
+		color #bbb
+		overflow hidden
+	.landing-title
+		font-family 'Proxima Nova', sans-serif
+		font-weight light
+		font-size 2.5em
+		text-transform uppercase
+		letter-spacing 0.2em
+		position absolute
+		top 50%
+		transform translate(-50%, -50%)
+		&.left 
+			left 101.2%
+		&.right 
+			left 1.2%
+			
+.landing.hidden
+	.landing-left, .landing-right
+		transition all 1200ms cubic-bezier(.68,.01,.94,.85)
+		opacity 0
+	.landing-left 
+		top -100%
+	.landing-right
+		top 100%
+			
+
+.section-one
+	background #000 radial-gradient(#333, #1f1f1f)
+	z-index 4

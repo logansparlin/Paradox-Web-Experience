@@ -7,3 +7,7 @@
 meteor-platform
 autopublish
 insecure
+iron:router 
+jnoble:multi-styl
+underscore
+mrt:jquery-mousewheel

@@ -1,0 +1,37 @@
+header 
+	position absolute
+	width 100%
+	height 50px
+	.menu-icon
+		width 30px
+		height 30px
+		display block
+		position absolute
+		top 30px
+		right 50px
+		z-index 55
+		color green
+		user-select none
+		cursor pointer
+		.bar 
+			width 100%
+			height 2px 
+			display block
+			background white
+			margin 5px 0
+			transition all 200ms ease-out
+
+.menu--active
+	.menu-icon
+		.bar 
+			transition all 200ms ease-out
+			transform-origin 50% 50%
+		.bar:nth-child(2)
+			opacity 0
+		.bar:nth-child(1)
+			transform-origin 50% 50%
+			transform rotate(-45deg) translate(-4px, -7px)
+			transform-origin center right
+		.bar:nth-child(3)
+			transform-origin center left
+			transform rotate(45deg) translate(-10px, -12px)
