@@ -1,3 +1,30 @@
+// Nav Styles
+
+.slide-navigation
+	position absolute
+	z-index 20
+	top 50%
+	left 40px
+	transform translateY(-50%)
+	ul 
+		list-style none
+		padding 0
+		li 
+			display block
+			width 10px
+			height 10px
+			border 1px solid #fff
+			border-radius 100%
+			background transparent
+			margin 20px 0
+			transition all 200ms ease-out
+			&.active 
+				background #fff
+				transition all 200ms ease-out
+			&:hover 
+				background rgba(255, 255, 255, 0.5)
+				transition all 200ms ease-out
+
 section
 	height 100%
 	width 100%
@@ -6,15 +33,16 @@ section
 	left 0
 
 .landing 
-	z-index 5
+	z-index 7
 	.landing-left, .landing-right
 		width 50%
 		position absolute
 		top 0
 		left 0
 		height 100%
-		transition all 1200ms cubic-bezier(.09,.67,.40,.95)
+		transition transform 1200ms cubic-bezier(.09,.67,.40,.95), opacity 1200ms cubic-bezier(.09,.67,.40,.95)
 		opacity 1
+		transform translate3d(0, 0, 0)
 	.landing-left 
 		background url('/img/landing-left.jpg') no-repeat center center
 		background-size auto 100%
@@ -28,6 +56,7 @@ section
 		color #bbb
 		overflow hidden
 	.landing-title
+		cursor default
 		font-family 'Proxima Nova', sans-serif
 		font-weight light
 		font-size 2.5em
@@ -36,21 +65,60 @@ section
 		position absolute
 		top 50%
 		transform translate(-50%, -50%)
+		// filter blur(0)
+		// transition all 1800ms ease-out
 		&.left 
 			left 101.2%
 		&.right 
 			left 1.2%
 			
 .landing.hidden
+	// .landing-title
+	// 	filter blur(10px)
+	// 	transition all 1200ms ease-out
 	.landing-left, .landing-right
-		transition all 1200ms cubic-bezier(.68,.01,.94,.85)
+		transition transform 1200ms cubic-bezier(.68,.01,.94,.85), opacity 1200ms cubic-bezier(.68,.01,.94,.85)
 		opacity 0
 	.landing-left 
-		top -100%
+		transform translate3d(0, -100%, 0)
 	.landing-right
-		top 100%
+		transform translate3d(0, 100%, 0)
 			
 
 .section-one
 	background #000 radial-gradient(#333, #1f1f1f)
+	z-index 6
+	.image-container
+		background url('/img/smoke.jpg')
+		position absolute
+		width 100%
+		height 100%
+		top 0
+		left 0
+		background-size cover
+		transform scale(0.8) translate3d(0, 0, 0)
+		&:after 
+			content ''
+			display block
+			position absolute
+			width 100%
+			height 100%
+			top 0
+			left 0
+			background rgba(0, 0, 0, 0.6)
+			
+.section-two
+	z-index 5
+	background green 
+	
+.section-three 
 	z-index 4
+	background blue
+	
+.section-four
+	z-index 3
+	background black
+
+.section-five 
+	z-index 2
+	background lightblue
