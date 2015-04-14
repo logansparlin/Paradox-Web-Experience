@@ -12,12 +12,27 @@ body, html
 	
 *
 	-webkit-tap-highlight-color rgba(0, 0, 0, 0)
+	font-family 'Proxima Nova', sans-serif
+	font-weight 100
 	
 h1, h2, h3, h4, h5, h6, p, span, div
 	margin 0
 	padding 0
 
 
-
 @import '*.import.styl'
 @import '*/**.import.styl'
+
+body:after 
+	content ''
+	position absolute
+	display block
+	width 100%
+	height 100%
+	top 0
+	left 0
+	z-index 55
+	background url('/img/grain.png')
+	animation grain 200ms infinite
+	pointer-events none
+	opacity 0.5

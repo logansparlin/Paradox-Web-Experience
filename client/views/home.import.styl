@@ -31,6 +31,17 @@ section
 	position absolute
 	top 0
 	left 0
+	h1
+		color #aaa
+		font-family 'Proxima Nova', sans-serif
+		font-weight 100
+		letter-spacing 0.4em
+		text-transform uppercase
+		top 50%
+		left 50%
+		transform translate(-50%, -50%)
+		font-size 2em
+		position absolute
 
 .landing 
 	z-index 7
@@ -40,7 +51,7 @@ section
 		top 0
 		left 0
 		height 100%
-		transition transform 1200ms cubic-bezier(.09,.67,.40,.95), opacity 1200ms cubic-bezier(.09,.67,.40,.95)
+		transition transform 1000ms cubic-bezier(.09,.67,.40,.95), opacity 1000ms cubic-bezier(.09,.67,.40,.95)
 		opacity 1
 		transform translate3d(0, 0, 0)
 	.landing-left 
@@ -75,9 +86,9 @@ section
 .landing.hidden
 	// .landing-title
 	// 	filter blur(10px)
-	// 	transition all 1200ms ease-out
+	// 	transition all 1000ms ease-out
 	.landing-left, .landing-right
-		transition transform 1200ms cubic-bezier(.68,.01,.94,.85), opacity 1200ms cubic-bezier(.68,.01,.94,.85)
+		transition transform 1000ms cubic-bezier(.68,.01,.94,.85), opacity 1000ms cubic-bezier(.68,.01,.94,.85)
 		opacity 0
 	.landing-left 
 		transform translate3d(0, -100%, 0)
@@ -88,6 +99,9 @@ section
 .section-one
 	background #000 radial-gradient(#333, #1f1f1f)
 	z-index 6
+	h1 
+		color #000
+		transition all 800ms ease-out
 	.image-container
 		background url('/img/smoke.jpg')
 		position absolute
@@ -97,6 +111,7 @@ section
 		left 0
 		background-size cover
 		transform scale(0.8) translate3d(0, 0, 0)
+		transition all 800ms ease-out
 		&:after 
 			content ''
 			display block
@@ -105,7 +120,15 @@ section
 			height 100%
 			top 0
 			left 0
-			background rgba(0, 0, 0, 0.6)
+			background rgba(0, 0, 0, 0.4)
+	&.active-slide
+		h1
+			color #ccc
+			transition all 1500ms ease-out
+			transition-delay 1000ms
+		.image-container
+			transform scale(1)
+			transition all 1000ms ease-out
 			
 .section-two
 	z-index 5

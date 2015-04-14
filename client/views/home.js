@@ -5,18 +5,34 @@ Template.home.rendered = function() {
 	var index = 0,
 		section = $('section'),
 		pager = $('.slide-navigation ul li');
+		h1 = $('.active-slide h1')
 
 	Session.set('index', index)
 
-	Tracker.autorun(function() {
+	this.autorun(function() {
 		var data = Session.get('index');
 		pager.eq(index).addClass('active')
+		section.eq(index -1).removeClass('active-slide')
+		section.eq(index).addClass('active-slide')
 	})
+
+	function checkIndex(index) {
+		if(index < 0) {
+			index = (section.length - 1)
+			Session.set('index', (section.length - 1))
+			alert(index)
+		} else if(index > (section.length - 1 )) {
+			index = 0
+			Session.set('index', 0)
+			alert(index)
+		} 
+	}
 
 	// Previous and Next
 	var detectDirection = function(event, delta) {
 		event.preventDefault();
 		// var delta = event.originalEvent.delta;
+		section.removeClass('active-slide')
 		if(delta < 0) {
 			// next
 			$('body').removeClass('previous')
@@ -26,8 +42,13 @@ Template.home.rendered = function() {
 
 
 			pager.eq(index).removeClass('active')
-			index = index += 1;
+			if(index >= (section.length - 1)) {
+				index = index = 0
+			} else {
+				index += 1
+			}
 			Session.set('index', index)
+			console.log('next')
 		}
 		else if(delta > 0) {
 			// previous
@@ -35,8 +56,13 @@ Template.home.rendered = function() {
 			$('body').addClass('previous')
 			section.removeClass('hidden')
 			pager.eq(index).removeClass('active')
-			index = index -= 1;
+			if(index <=0) {
+				index = (section.length - 1)
+			} else {
+				index -= 1
+			}
 			Session.set('index', index)
+			console.log('previous')
 		}
 	}
 	var changeData = _.debounce(detectDirection, 50, true);
