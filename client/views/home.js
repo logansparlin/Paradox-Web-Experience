@@ -2,6 +2,7 @@ Template.home.events({
 	'click .slide-navigation li': function(e) {
 		var index = $(e.target).index()
 		Session.set('index', index)
+		GAnalytics.event('click', 'navigation bubble', 'slide: ' + index)
 	},
 	'click .to-top-container': function(e) {
 		Session.set('index', 0)
@@ -11,12 +12,14 @@ Template.home.events({
 		if(index <= ($('section').length - 2)) {
 			Session.set('index', (index + 1))
 		}
+		GAnalytics.event('click (mobile)', 'next', 'slide: ' + index)
 	},
 	'click button.previous': function() {
 		var index = Session.get('index')
 		if(index >=1) {
 			Session.set('index', (index - 1))
 		}
+		GAnalytics.event('click (mobile)', 'previous', 'slide: ' + index)
 	}
 })
 
@@ -64,18 +67,6 @@ Template.home.rendered = function() {
 		}
 	})
 
-	function checkIndex(index) {
-		if(index < 0) {
-			index = (section.length - 1)
-			Session.set('index', (section.length - 1))
-			alert(index)
-		} else if(index > (section.length - 1 )) {
-			index = 0
-			Session.set('index', 0)
-			alert(index)
-		} 
-	}
-
 	// Previous and Next
 	var detectDirection = function(event, delta) {
 		event.preventDefault();
@@ -86,6 +77,7 @@ Template.home.rendered = function() {
 			if(delta < 0) {
 				// next
 
+				GAnalytics.event('scroll', 'to next slide', 'slide: ' + index)
 				if(index >= (section.length - 1)) {
 					index = index
 				} else {
@@ -96,6 +88,7 @@ Template.home.rendered = function() {
 			}
 			else if(delta > 0) {
 				// previous
+				GAnalytics.event('scroll', 'to previous slide', 'slide: ' + index)
 				if(index <=0) {
 					index = index
 				} else {
